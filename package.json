@@ -1,0 +1,10 @@
+{
+  "name": "crm-funnel-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CRM deal funnel dashboard embedded in Bitrix24",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
