@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Воронка сделок — аналитика CRM</title>
+  <link rel="icon" href="/_gw/icon">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="masthead__id">
+        <span class="mark">CRM</span>
+        <div>
+          <h1>Воронка сделок</h1>
+          <p class="sub" id="portalLine">Аналитика портала Битрикс24</p>
+        </div>
+      </div>
+      <div class="masthead__meta">
+        <span class="stamp" id="updatedAt">—</span>
+        <button class="refresh" id="refreshBtn" type="button" title="Обновить данные">
+          <span aria-hidden="true">↻</span> Обновить
+        </button>
+      </div>
+    </header>
+
+    <section class="controls" aria-label="Фильтр по периоду">
+      <div class="presets" role="group" aria-label="Период создания сделки">
+        <button type="button" data-preset="7d">7 дней</button>
+        <button type="button" data-preset="30d" class="is-active">30 дней</button>
+        <button type="button" data-preset="90d">90 дней</button>
+        <button type="button" data-preset="quarter">Квартал</button>
+        <button type="button" data-preset="year">Год</button>
+        <button type="button" data-preset="all">Всё время</button>
+        <button type="button" data-preset="custom">Свой период</button>
+      </div>
+      <form class="custom-range" id="customForm" hidden>
+        <label>с <input type="date" id="fromDate" required></label>
+        <label>по <input type="date" id="toDate" required></label>
+        <button type="submit">Показать</button>
+      </form>
+      <label class="funnel-select">
+        <span>Воронка</span>
+        <select id="categorySelect">
+          <option value="0">Все воронки</option>
+        </select>
+      </label>
+      <p class="period-note" id="periodNote">Сделки, созданные за период</p>
+    </section>
+
+    <div class="notice" id="notice" hidden role="status"></div>
+    <div class="notice notice--error" id="errorBox" hidden role="alert"></div>
+
+    <section class="kpis" aria-label="Ключевые показатели">
+      <article class="kpi kpi--hero">
+        <p class="kpi__label">Открытые сделки</p>
+        <p class="kpi__value" id="openAmount">—</p>
+        <p class="kpi__hint" id="openCount">—</p>
+      </article>
+      <article class="kpi">
+        <p class="kpi__label">Выиграно за период</p>
+        <p class="kpi__value" id="wonCount">—</p>
+        <p class="kpi__hint" id="wonAmount">—</p>
+      </article>
+      <article class="kpi">
+        <p class="kpi__label">Средний чек</p>
+        <p class="kpi__value" id="avgCheck">—</p>
+        <p class="kpi__hint">по выигранным сделкам</p>
+      </article>
+      <article class="kpi">
+        <p class="kpi__label">Всего сделок</p>
+        <p class="kpi__value" id="dealsCount">—</p>
+        <p class="kpi__hint">создано за период</p>
+      </article>
+    </section>
+
+    <section class="panel funnel" aria-label="Сводка по стадиям">
+      <div class="panel__head">
+        <h2>Стадии воронки</h2>
+        <p class="panel__hint">Количество и сумма по каждой стадии</p>
+      </div>
+      <div id="funnelChart" class="funnel__chart"></div>
+      <div class="table-wrap">
+        <table id="stageTable">
+          <thead>
+            <tr><th>Стадия</th><th class="num">Сделок</th><th class="num">Сумма</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel recent" aria-label="Последние сделки">
+      <div class="panel__head">
+        <h2>Последние сделки</h2>
+        <p class="panel__hint">15 самых новых сделок портала</p>
+      </div>
+      <div class="table-wrap">
+        <table id="recentTable">
+          <thead>
+            <tr><th>Сделка</th><th>Стадия</th><th>Ответственный</th><th class="num">Сумма</th><th class="num">Создана</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span id="footNote">Данные портала Битрикс24 · обновляются в фоне</span>
+      <span class="foot__mark">made for Bitrix24</span>
+    </footer>
+  </main>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
