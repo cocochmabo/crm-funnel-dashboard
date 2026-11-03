@@ -33,10 +33,17 @@
 ## Запуск
 
 ```bash
-npm start          # или: node server.js
+git clone https://github.com/cocochmabo/crm-funnel-dashboard.git
+cd crm-funnel-dashboard
+cp .env.example .env     # заполнить BITRIX_API_KEY, BITRIX_API_BASE_URL, BITRIX_PORTAL_DOMAIN
+npm start                # или: node server.js
 ```
 
-Внешних зависимостей нет, `npm install` не требуется.
+Внешних зависимостей нет, `npm install` не требуется. Требуется Node.js 20 или новее.
+
+Без заполненного `.env` приложение тоже стартует: интерфейс открывается, а `/api/*`
+отвечает понятным сообщением, что ключ приложения не задан. Для живых данных нужны
+все три переменные — их можно задать и окружением, тогда `.env` не нужен.
 
 ## Как устроена работа с порталом
 

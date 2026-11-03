@@ -4,6 +4,9 @@
   "private": true,
   "type": "module",
   "description": "CRM deal funnel dashboard embedded in Bitrix24",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node server.js"
   }
