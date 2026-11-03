@@ -1,6 +1,7 @@
 # Воронка сделок — описание решения
 
 Опубликовано: https://app-b973ed6e3077.vibecode.bitrix24.tech
+Код: https://github.com/cocochmabo/crm-funnel-dashboard (публичный, история — 9 коммитов)
 
 ## 1. Назначение и реализованные сценарии
 
@@ -75,9 +76,19 @@
    должна отрисоваться как обычно (без обращения к порталу за контекстом), не запрещая
    фрейминг.
 
-## 5. Состав и запуск
+## 5. Состав, репозиторий и запуск
 
-Код — в архиве [crm-funnel-dashboard-source.zip](crm-funnel-dashboard-source.zip), внешних
-зависимостей нет: `npm start` (или `node server.js`) поднимает сервер на `PORT` (по
-умолчанию 3000). Ключи в код и архив не входят: `BITRIX_API_KEY`, `BITRIX_API_BASE_URL`,
-`BITRIX_PORTAL_DOMAIN` читаются из окружения или локального `.env`.
+Код открыт на GitHub: https://github.com/cocochmabo/crm-funnel-dashboard — публичный
+репозиторий, ветка `main`, 9 коммитов, 15 файлов. Внешних зависимостей нет.
+
+```bash
+git clone https://github.com/cocochmabo/crm-funnel-dashboard.git
+cd crm-funnel-dashboard
+cp .env.example .env     # заполнить три переменные
+npm start                # или: node server.js, порт из PORT (по умолчанию 3000)
+```
+
+Ключи в код и историю не входят: `BITRIX_API_KEY`, `BITRIX_API_BASE_URL`,
+`BITRIX_PORTAL_DOMAIN` читаются из окружения или локального `.env`, который исключён
+через `.gitignore` с первого коммита; в репозитории лежит только `.env.example` с
+именами переменных без значений. Требуется Node.js 20 или новее.
